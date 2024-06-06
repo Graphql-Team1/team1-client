@@ -15,6 +15,19 @@ const fonts = {
     font-weight: 400;
     line-height: 2.5rem;
   `,
+  semibold_16: css`
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+    font-weight: 600;
+    line-height: 1.8rem;
+  `,
+
+  regular_16: css`
+    font-family: 'Pretendard';
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.8rem;
+  `,
 
   semibold_14: css`
     font-family: 'Pretendard';

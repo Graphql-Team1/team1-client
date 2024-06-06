@@ -12,6 +12,8 @@ declare module 'styled-components' {
 
     fonts: {
       h2: SerializedStyles;
+      semibold_16: SerializedStyles;
+      regular_16: SerializedStyles;
       semibold_14: SerializedStyles;
       regular_14: SerializedStyles;
       medium_12: SerializedStyles;
