@@ -4,7 +4,7 @@ const UserImg = () => {
   return (
     <UserImgContainer>
       <ImgWrapper>
-        <Img src="/test.jpeg" />
+        <Img src="/test.jpeg" alt='프로필 이미지'/>
       </ImgWrapper>
     </UserImgContainer>
   );
