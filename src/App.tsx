@@ -1,8 +1,14 @@
+import { ThemeProvider } from 'styled-components';
+import InstaAccount from './page/InstaAccount';
+import { GlobalStyle } from './style/globalStyle';
+import theme from './style/theme';
+
 function App() {
   return (
-    <div>
-      <div>App</div>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <InstaAccount />
+    </ThemeProvider>
   );
 }
 
