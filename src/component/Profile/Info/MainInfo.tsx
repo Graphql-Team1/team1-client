@@ -1,20 +1,35 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { IcMore, IcRecommend, IcSelect } from '../../../assets';
 
 const USER_NAME = 'lynii._.i';
 
 const MainInfo = () => {
+  const [isFollowed, setIsFollowed] = useState(false);
+
+  const handleClickFollowBtn = () => {
+    setIsFollowed(!isFollowed);
+  };
+
   return (
     <MainInfoContainer>
       <UserName>{USER_NAME}</UserName>
 
       <BtnWrapper>
-        <FollowBtn type="button">
+        <FollowBtn
+          type="button"
+          onClick={handleClickFollowBtn}
+          $isFollowed={isFollowed}
+        >
           <ContentsBox>
-            <Text>팔로잉</Text>
-            <IconBox>
-              <IcSelect />
-            </IconBox>
+            <Text $isFollowed={isFollowed}>
+              {isFollowed ? '팔로우' : '팔로잉'}
+            </Text>
+            {!isFollowed && (
+              <IconBox>
+                <IcSelect />
+              </IconBox>
+            )}
           </ContentsBox>
         </FollowBtn>
         <DMBtn type="button">메시지 보내기</DMBtn>
@@ -52,12 +67,13 @@ const BtnWrapper = styled.div`
   gap: 0.8rem;
 `;
 
-const FollowBtn = styled.button`
+const FollowBtn = styled.button<{ $isFollowed: boolean }>`
   padding: 0.7rem 1.6rem;
   border-radius: 0.8rem;
 
-  background-color: ${({ theme }) => theme.colors.lightGray};
-  color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme, $isFollowed }) =>
+    $isFollowed ? theme.colors.primeBlue : theme.colors.lightGray};
+
   ${({ theme }) => theme.fonts.semibold_14};
 `;
 
@@ -67,8 +83,9 @@ const ContentsBox = styled.div`
   align-items: center;
 `;
 
-const Text = styled.p`
-  color: ${({ theme }) => theme.colors.black};
+const Text = styled.p<{ $isFollowed: boolean }>`
+  color: ${({ theme, $isFollowed }) =>
+    $isFollowed ? theme.colors.white : theme.colors.black};
   ${({ theme }) => theme.fonts.semibold_14};
 `;
 
