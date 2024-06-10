@@ -8,7 +8,7 @@ const MainInfo = ({ handleModal }: Props) => {
   const [isFollowed, setIsFollowed] = useState(false);
 
   const handleClickFollowBtn = () => {
-    if (!isFollowed) {
+    if (isFollowed) {
       handleModal();
     }
     setIsFollowed(!isFollowed);
@@ -26,9 +26,9 @@ const MainInfo = ({ handleModal }: Props) => {
         >
           <ContentsBox>
             <Text $isFollowed={isFollowed}>
-              {isFollowed ? '팔로우' : '팔로잉'}
+              {isFollowed ? '팔로잉' : '팔로우'}
             </Text>
-            {!isFollowed && (
+            {isFollowed && (
               <IconBox>
                 <IcSelect />
               </IconBox>
@@ -75,7 +75,7 @@ const FollowBtn = styled.button<{ $isFollowed: boolean }>`
   border-radius: 0.8rem;
 
   background-color: ${({ theme, $isFollowed }) =>
-    $isFollowed ? theme.colors.primeBlue : theme.colors.lightGray};
+    $isFollowed ? theme.colors.lightGray : theme.colors.primeBlue};
 
   ${({ theme }) => theme.fonts.semibold_14};
 `;
@@ -88,7 +88,7 @@ const ContentsBox = styled.div`
 
 const Text = styled.p<{ $isFollowed: boolean }>`
   color: ${({ theme, $isFollowed }) =>
-    $isFollowed ? theme.colors.white : theme.colors.black};
+    $isFollowed ? theme.colors.black : theme.colors.white};
   ${({ theme }) => theme.fonts.semibold_14};
 `;
 
