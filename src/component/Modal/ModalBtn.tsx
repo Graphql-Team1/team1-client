@@ -3,32 +3,49 @@ import styled from 'styled-components';
 import { IcCloseFriend, IcFavorite, IcSelect } from '../../assets';
 type Props = { handleModal: () => void };
 const ModalBtn = ({ handleModal }: Props) => {
-  return (
-    <BtnLayout>
-      <BtnContainer>
-        <BtnTxt>친한 친구 리스트에 추가</BtnTxt>
+  const BTNCONTENT = [
+    {
+      txt: '친한 친구 리스트에 추가',
+      icon: (
         <BtnIcCloseFriend>
           <IcCloseFriend />
         </BtnIcCloseFriend>
-      </BtnContainer>
-      <BtnContainer>
-        <BtnTxt>즐겨찾기에 추가</BtnTxt>
-        <IcFavorite />
-      </BtnContainer>
-      <BtnContainer>
-        <BtnTxt>업데이트 안 보기</BtnTxt>
-        <BtnMore />
-      </BtnContainer>
-      <BtnContainer>
-        <BtnTxt>제한</BtnTxt>
-        <BtnMore />
-      </BtnContainer>
-      <BtnContainer
-        style={{ borderRadius: '0 0 12px 12px' }}
-        onClick={handleModal}
-      >
-        <BtnTxt>팔로우 취소</BtnTxt>
-      </BtnContainer>
+      ),
+    },
+    {
+      txt: '즐겨찾기에 추가',
+      icon: <IcFavorite />,
+    },
+    {
+      txt: '업데이트 안 보기',
+      icon: <BtnMore />,
+    },
+    {
+      txt: '제한',
+      icon: <BtnMore />,
+    },
+    {
+      txt: '팔로우 취소',
+      icon: null,
+      onClick: handleModal,
+      style: { borderRadius: '0 0 12px 12px' },
+    },
+  ];
+
+  return (
+    <BtnLayout>
+      {BTNCONTENT.map((ele, idx) =>
+        idx === BTNCONTENT.length - 1 ? (
+          <BtnLastContainer key={ele.txt} onClick={ele.onClick}>
+            <BtnTxt>{ele.txt}</BtnTxt>
+          </BtnLastContainer>
+        ) : (
+          <BtnContainer key={ele.txt}>
+            <BtnTxt>{ele.txt}</BtnTxt>
+            {ele.icon}
+          </BtnContainer>
+        ),
+      )}
     </BtnLayout>
   );
 };
@@ -68,6 +85,9 @@ const BtnContainer = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.lightGray};
   }
+`;
+const BtnLastContainer = styled(BtnContainer)`
+  border-radius: 0 0 12px 12px;
 `;
 const BtnTxt = styled.p`
   ${({ theme }) => theme.fonts.regular_14};
