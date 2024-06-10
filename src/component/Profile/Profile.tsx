@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+
 import UserImg from './UserImg';
 import UserInfo from './UserInfo';
-
-const Profile = () => {
+type Props = { handleModal: () => void };
+const Profile = ({ handleModal }: Props) => {
   return (
     <ProfileLayout>
       <UserImg />
-      <UserInfo />
+      <UserInfo handleModal={handleModal} />
     </ProfileLayout>
   );
 };

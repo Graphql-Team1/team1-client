@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+
 import CurrentInfo from './Info/CurrentInfo';
 import MainInfo from './Info/MainInfo';
 import SubInfo from './Info/SubInfo';
-
-const UserInfo = () => {
+type Props = { handleModal: () => void };
+const UserInfo = ({ handleModal }: Props) => {
   return (
     <UserInfoLayout>
-      <MainInfo />
+      <MainInfo handleModal={handleModal} />
       <CurrentInfo />
       <SubInfo />
     </UserInfoLayout>

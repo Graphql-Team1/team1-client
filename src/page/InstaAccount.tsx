@@ -1,12 +1,21 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
+import Modal from '../component/Modal/Modal';
 import Profile from '../component/Profile/Profile';
 import Recommend from '../component/Recommend/Recommend';
 
 const InstaAccount = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
+
   return (
     <InstaAccountLayout>
-      <Profile />
+      {isModalOpen && <Modal handleModal={handleModal} />}
+      <Profile handleModal={handleModal} />
       <Recommend />
     </InstaAccountLayout>
   );
