@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import { IcCloseFriend, IcFavorite, IcSelect } from '../../assets';
-type Props = { handleModal: () => void };
-const ModalBtn = ({ handleModal }: Props) => {
+type Props = { handleClickUnfollowBtn: () => void };
+const ModalBtn = ({ handleClickUnfollowBtn }: Props) => {
   const BTNCONTENT = [
     {
       txt: '친한 친구 리스트에 추가',
@@ -27,7 +27,7 @@ const ModalBtn = ({ handleModal }: Props) => {
     {
       txt: '팔로우 취소',
       icon: null,
-      onClick: handleModal,
+      onClick: handleClickUnfollowBtn,
     },
   ];
 

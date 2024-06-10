@@ -3,16 +3,19 @@ import styled from 'styled-components';
 import ModalBtn from './ModalBtn';
 import ModalTop from './ModalTop';
 
-type Props = { handleModal: () => void };
+type Props = {
+  handleModal: () => void;
+  handleClickUnfollowBtn: () => void;
+};
 
-const Modal = ({ handleModal }: Props) => {
+const Modal = ({ handleModal, handleClickUnfollowBtn }: Props) => {
   return (
     <>
       <ModalBG onClick={handleModal} />
       <ModalLayout>
         <ModalTop handleModal={handleModal} />
         <SplitLine />
-        <ModalBtn handleModal={handleModal} />
+        <ModalBtn handleClickUnfollowBtn={handleClickUnfollowBtn} />
       </ModalLayout>
     </>
   );

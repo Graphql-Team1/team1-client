@@ -1,17 +1,19 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 
 import { IcMore, IcRecommend, IcSelect } from '../../../assets';
 import { USER_NAME } from '../../../constants/userInfo';
-type Props = { handleModal: () => void };
-const MainInfo = ({ handleModal }: Props) => {
-  const [isFollowed, setIsFollowed] = useState(false);
+type Props = {
+  handleModal: () => void;
+  isFollowed: boolean;
+  handleClickFollowBtn: () => void;
+};
+const MainInfo = ({ handleModal, isFollowed, handleClickFollowBtn }: Props) => {
+  const handleClickBtn = () => {
+    handleClickFollowBtn();
 
-  const handleClickFollowBtn = () => {
     if (isFollowed) {
       handleModal();
     }
-    setIsFollowed(!isFollowed);
   };
 
   return (
@@ -21,7 +23,7 @@ const MainInfo = ({ handleModal }: Props) => {
       <BtnWrapper>
         <FollowBtn
           type="button"
-          onClick={handleClickFollowBtn}
+          onClick={handleClickBtn}
           $isFollowed={isFollowed}
         >
           <ContentsBox>

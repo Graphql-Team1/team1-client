@@ -7,15 +7,34 @@ import Recommend from '../component/Recommend/Recommend';
 
 const InstaAccount = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isFollowed, setIsFollowed] = useState(false);
 
   const handleModal = () => {
     setModalOpen(!isModalOpen);
   };
 
+  const handleClickUnfollowBtn = () => {
+    handleModal();
+    setIsFollowed(false);
+  };
+
+  const handleClickFollowBtn = () => {
+    setIsFollowed(true);
+  };
+
   return (
     <InstaAccountLayout>
-      {isModalOpen && <Modal handleModal={handleModal} />}
-      <Profile handleModal={handleModal} />
+      {isModalOpen && (
+        <Modal
+          handleModal={handleModal}
+          handleClickUnfollowBtn={handleClickUnfollowBtn}
+        />
+      )}
+      <Profile
+        isFollowed={isFollowed}
+        handleModal={handleModal}
+        handleClickFollowBtn={handleClickFollowBtn}
+      />
       <Recommend />
     </InstaAccountLayout>
   );
