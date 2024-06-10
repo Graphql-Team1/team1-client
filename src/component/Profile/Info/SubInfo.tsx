@@ -17,7 +17,7 @@ const SubInfo = () => {
       <FollowerWrapper>
         {DUMMY_FOLLOWERS.map((follower, idx) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={follower.id}>
               <Follower $isSecondFollower={idx === 1}>{follower.id}</Follower>
               <Desc>{follower.desc}</Desc>
             </React.Fragment>
