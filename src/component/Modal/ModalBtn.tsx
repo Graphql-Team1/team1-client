@@ -28,7 +28,6 @@ const ModalBtn = ({ handleModal }: Props) => {
       txt: '팔로우 취소',
       icon: null,
       onClick: handleModal,
-      style: { borderRadius: '0 0 12px 12px' },
     },
   ];
 
