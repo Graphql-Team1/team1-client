@@ -8,7 +8,7 @@ type Props = { handleModal: () => void };
 const Modal = ({ handleModal }: Props) => {
   return (
     <>
-      <ModalBG />
+      <ModalBG onClick={handleModal} />
       <ModalLayout>
         <ModalTop handleModal={handleModal} />
         <SplitLine />
@@ -20,9 +20,12 @@ const Modal = ({ handleModal }: Props) => {
 
 const ModalBG = styled.div`
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
+  height: 100vh;
 
   background-color: black;
   opacity: 85%;
