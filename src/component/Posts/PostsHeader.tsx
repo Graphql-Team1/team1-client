@@ -57,9 +57,10 @@ const sharedColor = css<{ $isClicked: boolean }>`
         `};
 `;
 
-const PostHeader = styled.header<{ $isClicked: boolean }>`
+const PostHeader = styled.div<{ $isClicked: boolean }>`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
   padding: 2.5rem 0;
 
   ${({ theme, $isClicked }) =>
