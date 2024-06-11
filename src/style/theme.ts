@@ -43,6 +43,13 @@ const fonts = {
     line-height: 1.8rem;
   `,
 
+  semibold_12: css`
+    font-family: 'Pretendard';
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.4rem;
+  `,
+
   medium_12: css`
     font-family: 'Pretendard';
     font-size: 1.2rem;

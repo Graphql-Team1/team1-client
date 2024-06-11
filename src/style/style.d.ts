@@ -16,6 +16,7 @@ declare module 'styled-components' {
       regular_16: SerializedStyles;
       semibold_14: SerializedStyles;
       regular_14: SerializedStyles;
+      semibold_12: SerializedStyles;
       medium_12: SerializedStyles;
     };
   }
