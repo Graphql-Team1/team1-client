@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import Modal from '../component/Modal/Modal';
+import Posts from '../component/Posts/Posts';
 import Profile from '../component/Profile/Profile';
 import Recommend from '../component/Recommend/Recommend';
 
@@ -36,6 +37,7 @@ const InstaAccount = () => {
         handleClickFollowBtn={handleClickFollowBtn}
       />
       <Recommend />
+      <Posts />
     </InstaAccountLayout>
   );
 };
@@ -50,4 +52,7 @@ const InstaAccountLayout = styled.div`
 
   padding: 3rem 2rem 0;
   width: calc(100% - 4rem);
+
+  overflow-y: auto;
+  gap: 3rem;
 `;
