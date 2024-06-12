@@ -2,12 +2,20 @@ import styled from 'styled-components';
 
 import UserImg from './UserImg';
 import UserInfo from './UserInfo';
-type Props = { handleModal: () => void };
-const Profile = ({ handleModal }: Props) => {
+type Props = {
+  handleModal: () => void;
+  isFollowed: boolean;
+  handleClickFollowBtn: () => void;
+};
+const Profile = ({ handleModal, isFollowed, handleClickFollowBtn }: Props) => {
   return (
     <ProfileLayout>
       <UserImg />
-      <UserInfo handleModal={handleModal} />
+      <UserInfo
+        handleModal={handleModal}
+        isFollowed={isFollowed}
+        handleClickFollowBtn={handleClickFollowBtn}
+      />
     </ProfileLayout>
   );
 };
