@@ -2,6 +2,7 @@
   "src": "./src",
   "schema": "./src/schema/app_schema.graphql",
   "language": "typescript",
+  "eagerEsModules": true,
   "featureFlags": {
     "enable_relay_resolver_transform": true
   }
