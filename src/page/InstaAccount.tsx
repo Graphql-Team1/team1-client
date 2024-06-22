@@ -17,11 +17,11 @@ const InstaAccount = () => {
   const handleModal = () => {
     setModalOpen(!isModalOpen);
   };
+  const handleFollowChange = (isFollowed: boolean) => {
+    setIsFollowed(isFollowed);
+    const commitFunction = isFollowed ? commitFollow : commitUnfollow;
 
-  const handleClickUnfollowBtn = () => {
-    handleModal();
-    setIsFollowed(false);
-    commitUnfollow({
+    commitFunction({
       variables: {},
       onCompleted(data) {
         console.log(data);
@@ -29,14 +29,13 @@ const InstaAccount = () => {
     });
   };
 
+  const handleClickUnfollowBtn = () => {
+    handleModal();
+    handleFollowChange(false);
+  };
+
   const handleClickFollowBtn = () => {
-    setIsFollowed(true);
-    commitFollow({
-      variables: {},
-      onCompleted(data) {
-        console.log(data);
-      },
-    });
+    handleFollowChange(true);
   };
 
   return (
