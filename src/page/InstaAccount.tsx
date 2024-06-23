@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useMutation } from 'react-relay';
 import styled from 'styled-components';
 
+import followUser from '../apis/followUser';
+import unfollowUser from '../apis/unfollowUser';
 import Modal from '../component/Modal/Modal';
 import Posts from '../component/Posts/Posts';
 import Profile from '../component/Profile/Profile';
@@ -9,18 +12,30 @@ import Recommend from '../component/Recommend/Recommend';
 const InstaAccount = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isFollowed, setIsFollowed] = useState(false);
-
+  const [commitUnfollow] = useMutation(unfollowUser);
+  const [commitFollow] = useMutation(followUser);
   const handleModal = () => {
     setModalOpen(!isModalOpen);
+  };
+  const handleFollowChange = (isFollowed: boolean) => {
+    setIsFollowed(isFollowed);
+    const commitFunction = isFollowed ? commitFollow : commitUnfollow;
+
+    commitFunction({
+      variables: {},
+      onCompleted(data) {
+        console.log(data);
+      },
+    });
   };
 
   const handleClickUnfollowBtn = () => {
     handleModal();
-    setIsFollowed(false);
+    handleFollowChange(false);
   };
 
   const handleClickFollowBtn = () => {
-    setIsFollowed(true);
+    handleFollowChange(true);
   };
 
   return (
