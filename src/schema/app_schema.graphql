@@ -1,0 +1,14 @@
+type FollowResponseDTO {
+  id: ID! # follower id (현재 유저 id)
+  followingCount: Int!
+  followerCount: Int!
+}
+
+type Query {
+  member(id: ID!): FollowResponseDTO!
+}
+
+type Mutation {
+  followUser(followingId: ID!): FollowResponseDTO!
+  unfollowUser(followingId: ID!): FollowResponseDTO!
+}
