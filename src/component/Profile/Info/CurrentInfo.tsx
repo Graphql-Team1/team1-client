@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-const DUMMY_INFO = [27, 904, 701];
+const FOLLOWER_INFO = [27, 2, 2];
 
 const CURRENT_INFO = [
-  { title: '게시물', info: DUMMY_INFO[0] },
-  { title: '팔로워', info: DUMMY_INFO[1] },
-  { title: '팔로우', info: DUMMY_INFO[2] },
+  { title: '게시물', info: FOLLOWER_INFO[0] },
+  { title: '팔로워', info: FOLLOWER_INFO[1] },
+  { title: '팔로우', info: FOLLOWER_INFO[2] },
 ];
 
 const CurrentInfo = () => {
