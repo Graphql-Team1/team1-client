@@ -9,9 +9,23 @@ import Posts from '../component/Posts/Posts';
 import Profile from '../component/Profile/Profile';
 import Recommend from '../component/Recommend/Recommend';
 
+type object1 = {
+  followUser?: {
+    followingCount?: number;
+    followerCount?: number;
+  };
+
+  unfollowUser?: {
+    followingCount?: number;
+    followerCount?: number;
+  };
+};
+
 const InstaAccount = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isFollowed, setIsFollowed] = useState(false);
+  const [follower, setFollower] = useState<number | undefined>(2);
+
   const [commitUnfollow] = useMutation(unfollowUser);
   const [commitFollow] = useMutation(followUser);
   const handleModal = () => {
@@ -23,8 +37,12 @@ const InstaAccount = () => {
 
     commitFunction({
       variables: {},
-      onCompleted(data) {
-        console.log(data);
+      onCompleted(data: object1) {
+        if (data.followUser) {
+          setFollower(data.followUser.followingCount);
+        } else if (data.unfollowUser) {
+          setFollower(data.unfollowUser.followingCount);
+        }
       },
     });
   };
@@ -50,6 +68,7 @@ const InstaAccount = () => {
         isFollowed={isFollowed}
         handleModal={handleModal}
         handleClickFollowBtn={handleClickFollowBtn}
+        follower = {follower}
       />
       <Recommend />
       <Posts />

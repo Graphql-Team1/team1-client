@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 
-const FOLLOWER_INFO = [27, 2, 2];
+type Props = {
+  follower: number | undefined;
+};
 
-const CURRENT_INFO = [
-  { title: '게시물', info: FOLLOWER_INFO[0] },
-  { title: '팔로워', info: FOLLOWER_INFO[1] },
-  { title: '팔로우', info: FOLLOWER_INFO[2] },
-];
+const CurrentInfo = ({ follower }: Props) => {
+  const FOLLOWER_INFO = [27, follower, 2];
 
-const CurrentInfo = () => {
+  const CURRENT_INFO = [
+    { title: '게시물', info: FOLLOWER_INFO[0] },
+    { title: '팔로워', info: FOLLOWER_INFO[1] },
+    { title: '팔로우', info: FOLLOWER_INFO[2] },
+  ];
+
   return (
     <section>
       <CurrentInfoWrapper>
