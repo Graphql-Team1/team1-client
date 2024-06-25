@@ -9,7 +9,7 @@ import Posts from '../component/Posts/Posts';
 import Profile from '../component/Profile/Profile';
 import Recommend from '../component/Recommend/Recommend';
 
-type object1 = {
+type DataType = {
   followUser?: {
     followingCount?: number;
     followerCount?: number;
@@ -37,7 +37,7 @@ const InstaAccount = () => {
 
     commitFunction({
       variables: {},
-      onCompleted(data: object1) {
+      onCompleted(data: DataType) {
         if (data.followUser) {
           setFollower(data.followUser.followingCount);
         } else if (data.unfollowUser) {
@@ -68,7 +68,7 @@ const InstaAccount = () => {
         isFollowed={isFollowed}
         handleModal={handleModal}
         handleClickFollowBtn={handleClickFollowBtn}
-        follower = {follower}
+        follower={follower}
       />
       <Recommend />
       <Posts />
