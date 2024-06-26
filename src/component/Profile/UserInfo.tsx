@@ -7,13 +7,13 @@ type Props = {
   handleModal: () => void;
   isFollowed: boolean;
   handleClickFollowBtn: () => void;
-  follower: number | undefined;
+  followerStatus: Array<number>;
 };
 const UserInfo = ({
   handleModal,
   isFollowed,
   handleClickFollowBtn,
-  follower,
+  followerStatus,
 }: Props) => {
   return (
     <UserInfoLayout>
@@ -22,7 +22,7 @@ const UserInfo = ({
         isFollowed={isFollowed}
         handleClickFollowBtn={handleClickFollowBtn}
       />
-      <CurrentInfo follower={follower}/>
+      <CurrentInfo followerStatus={followerStatus}/>
       <SubInfo />
     </UserInfoLayout>
   );

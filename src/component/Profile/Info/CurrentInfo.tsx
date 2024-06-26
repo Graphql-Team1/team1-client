@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 type Props = {
-  follower: number | undefined;
+  followerStatus: Array<number>;
 };
 
-const CurrentInfo = ({ follower }: Props) => {
-  const FOLLOWER_INFO = [27, follower, 2];
+const CurrentInfo = ({ followerStatus }: Props) => {
+  const FOLLOWER_INFO = [27, followerStatus[0], followerStatus[1]];
 
   const CURRENT_INFO = [
     { title: '게시물', info: FOLLOWER_INFO[0] },
