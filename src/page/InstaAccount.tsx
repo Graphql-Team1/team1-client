@@ -11,20 +11,20 @@ import Recommend from '../component/Recommend/Recommend';
 
 type DataType = {
   followUser?: {
-    followingCount?: number;
-    followerCount?: number;
+    followingCount: number;
+    followerCount: number;
   };
 
   unfollowUser?: {
-    followingCount?: number;
-    followerCount?: number;
+    followingCount: number;
+    followerCount: number;
   };
 };
 
 const InstaAccount = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [isFollowed, setIsFollowed] = useState(false);
-  const [follower, setFollower] = useState<number | undefined>(2);
+  const [followerStatus, setFollowerStatus] = useState<number[]>([2, 2]);
 
   const [commitUnfollow] = useMutation(unfollowUser);
   const [commitFollow] = useMutation(followUser);
@@ -38,10 +38,14 @@ const InstaAccount = () => {
     commitFunction({
       variables: {},
       onCompleted(data: DataType) {
-        if (data.followUser) {
-          setFollower(data.followUser.followingCount);
-        } else if (data.unfollowUser) {
-          setFollower(data.unfollowUser.followingCount);
+        const { followUser, unfollowUser } = data;
+
+        if (followUser) {
+          const { followingCount, followerCount } = followUser;
+          setFollowerStatus([followingCount, followerCount]);
+        } else if (unfollowUser) {
+          const { followingCount, followerCount } = unfollowUser;
+          setFollowerStatus([followingCount, followerCount]);
         }
       },
     });
@@ -68,7 +72,7 @@ const InstaAccount = () => {
         isFollowed={isFollowed}
         handleModal={handleModal}
         handleClickFollowBtn={handleClickFollowBtn}
-        follower={follower}
+        followerStatus={followerStatus}
       />
       <Recommend />
       <Posts />
