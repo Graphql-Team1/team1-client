@@ -6,8 +6,14 @@ type Props = {
   handleModal: () => void;
   isFollowed: boolean;
   handleClickFollowBtn: () => void;
+  followerStatus: Array<number>;
 };
-const Profile = ({ handleModal, isFollowed, handleClickFollowBtn }: Props) => {
+const Profile = ({
+  handleModal,
+  isFollowed,
+  handleClickFollowBtn,
+  followerStatus,
+}: Props) => {
   return (
     <ProfileLayout>
       <UserImg />
@@ -15,6 +21,7 @@ const Profile = ({ handleModal, isFollowed, handleClickFollowBtn }: Props) => {
         handleModal={handleModal}
         isFollowed={isFollowed}
         handleClickFollowBtn={handleClickFollowBtn}
+        followerStatus={followerStatus}
       />
     </ProfileLayout>
   );

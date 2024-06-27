@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 
-const DUMMY_INFO = [27, 904, 701];
+type Props = {
+  followerStatus: Array<number>;
+};
 
-const CURRENT_INFO = [
-  { title: '게시물', info: DUMMY_INFO[0] },
-  { title: '팔로워', info: DUMMY_INFO[1] },
-  { title: '팔로우', info: DUMMY_INFO[2] },
-];
+const CurrentInfo = ({ followerStatus }: Props) => {
+  const FOLLOWER_INFO = [27, followerStatus[0], followerStatus[1]];
 
-const CurrentInfo = () => {
+  const CURRENT_INFO = [
+    { title: '게시물', info: FOLLOWER_INFO[0] },
+    { title: '팔로워', info: FOLLOWER_INFO[1] },
+    { title: '팔로우', info: FOLLOWER_INFO[2] },
+  ];
+
   return (
     <section>
       <CurrentInfoWrapper>
