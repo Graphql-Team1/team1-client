@@ -39,12 +39,10 @@ const InstaAccount = () => {
       variables: {},
       onCompleted(data: DataType) {
         const { followUser, unfollowUser } = data;
+        const user = followUser || unfollowUser;
 
-        if (followUser) {
-          const { followingCount, followerCount } = followUser;
-          setFollowerStatus([followingCount, followerCount]);
-        } else if (unfollowUser) {
-          const { followingCount, followerCount } = unfollowUser;
+        if (user) {
+          const { followingCount, followerCount } = user;
           setFollowerStatus([followingCount, followerCount]);
         }
       },
